@@ -3,7 +3,7 @@ const Beer = require("../models/Beer.model");
 const User = require("../models/User.model");
 
 
-router.get("/", req, res, next) => {
+router.get("/", (req, res, next) => {
     Beer.find()
     .then(beersFromDB => {
         res.render("beers/beer-collection", {beers: beersFromDB})
@@ -12,8 +12,9 @@ router.get("/", req, res, next) => {
     })
 });
 
-router.post("/beer-create", req, res, next) => {
+router.post("/beer-create", (req, res, next) => {
     const beerDetails
 }
+
 
 module.exports = router;
