@@ -4,6 +4,7 @@ const { Schema, model } = require('mongoose');
 const beerSchema = new Schema(
   {
     title: String,
+    brewery: String,
     description: String,
     rating: {
         type: Number,
