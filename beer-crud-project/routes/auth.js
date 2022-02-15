@@ -26,6 +26,12 @@ router.post("/signup", isLoggedOut, (req, res) => {
     return;
 }
 
+  if(!email) {
+    return res
+    .status(400)
+    .render("auth/singnup")
+  }
+
   if (password.length < 8) {
     return res.status(400).render("auth/signup", {
       errorMessage: "Your password needs to be at least 8 characters long.",
@@ -148,12 +154,12 @@ router.get("/logout", isLoggedIn, (req, res) => {
         .status(500)
         .render("auth/logout", { errorMessage: err.message });
     }
-    res.redirect("users/user-profile");
+    res.redirect("/");
   });
 });
 
 router.get('/user-profile', (req, res) => {
-  res.render('users/user-profile');
+  res.render('users/user-profile', {userInSession: req.session.user})
 });
 
 module.exports = router;
