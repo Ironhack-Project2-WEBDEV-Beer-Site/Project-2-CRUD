@@ -21,6 +21,7 @@ router.post("/beer-create", (req, res, next) => {
     const beerDetails = {
         title: req.body.title,
         brewery: req.body.brewery,
+        //alcoholontent: req.body.alcoholontent,
         description: req.body.description,
         image: req.body.image,
         rating: req.body.rating
@@ -59,6 +60,7 @@ router.post("/:beerId/edit", (req, res, next) => {
     const beerDetails = {
         title: req.body.title,
         brewery: req.body.brewery,
+        //alcoholcontent: req.body.alcoholontent,
         description: req.body.description,
         image: req.body.image,
         rating: req.body.rating
