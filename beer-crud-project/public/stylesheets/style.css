@@ -90,3 +90,17 @@ form button:hover {
     left:0;
     z-index:1;
 }
+
+.button{
+  margin: 30px auto;
+  width: 380px;
+  background: #00b7ff;
+}
+
+.button a{
+  color: #fff;
+}
+
+.signInOut{
+  text-align: center;
+}

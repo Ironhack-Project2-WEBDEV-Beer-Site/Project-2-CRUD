@@ -10,8 +10,12 @@
 
 <body id="layoutBody">
    <header id="header">
-      <a href="/">Home</a> <span>|</span> <a href="/beers/beer-list">Beer Collection</a> <span>|</span> <a href="/auth/user-profile">User
-         Profile</a>
+      <a href="/">Home</a> <span>|</span> <a href="/beers/beer-list">Beer Collection</a> <span>|
+         {{#if userInSession}}
+         </span> <a href="/auth/logout">Logout</a>
+         {{else}}
+      </span> <a href="/auth/user-profile">Account</a>
+      {{/if}}
    </header>
 
    {{{body}}}
