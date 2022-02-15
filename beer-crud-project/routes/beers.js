@@ -5,51 +5,56 @@ const User = require("../models/User.model");
 
 router.get("/beer-list", (req, res, next) => {
     Beer.find()
-    .then(beersFromDB => {
-        res.render("beers/beer-list", {beers: beersFromDB})
-    })
-    .catch(err => {console.log("Error getting beers from DB.", err)
-    })
+        .then(beersFromDB => {
+            res.render("beers/beer-list", { beers: beersFromDB })
+        })
+        .catch(err => {
+            console.log("Error getting beers from DB.", err)
+        })
 });
 
- router.post("/beer-create", (req, res, next) => {
-     const beerDetails = {
+router.get("/beer-create", (req, res, next) => {
+            res.render("beers/beer-create")
+});
+
+router.post("/beer-create", (req, res, next) => {
+    const beerDetails = {
         title: req.body.title,
         brewery: req.body.brewery,
         description: req.body.description,
         image: req.body.image,
         rating: req.body.rating
-     }; 
-     Beer.create(beerDetails)
-    .then(() => {
-      res.redirect("/");
-    })
-    .catch( err => {
-      console.log("Error creating new beer.", err);
-    })
+    };
+    Beer.create(beerDetails)
+        .then(() => {
+            res.redirect("/beers/beer-list");
+        })
+        .catch(err => {
+            console.log("Error creating new beer.", err);
+        })
 });
 
 router.get("/:beerId", (req, res, next) => {
     Beer.findById(req.params.beerId)
-    .then( beer => {
-        res.render("beers/beers-details", beer)
-    })
-    .catch( err => {
-        console.log("Error getting beer from DB", err)
-    })
+        .then(beer => {
+            res.render("beers/beer-details", beer)
+        })
+        .catch(err => {
+            console.log("Error getting beer from DB", err)
+        })
 });
 
-router.get("/:beerId/edit", (req, res, next) =>{
+router.get("/:beerId/edit", (req, res, next) => {
     Beer.findById(req.params.beerId)
-    .then(beer => {
-        res.render("beers/beer-edit", beer)
-    })
-    .catch( err => {
-        console.log("Error getting beer details from DB", err)
-    })
+        .then(beer => {
+            res.render("beers/beer-edit", beer)
+        })
+        .catch(err => {
+            console.log("Error getting beer details from DB", err)
+        })
 });
 
-router.post("/:bookId/edit", (req, res, next) => {
+router.post("/:beerId/edit", (req, res, next) => {
     const beerId = req.params.beerId;
     const beerDetails = {
         title: req.body.title,
@@ -57,26 +62,25 @@ router.post("/:bookId/edit", (req, res, next) => {
         description: req.body.description,
         image: req.body.image,
         rating: req.body.rating
-     }; 
-     Beer.findByIdAndUpdate(beerId, beerDetails)
-    .then( () => {
-      res.redirect(`/beers/${beerId}`);
-    })
-    .catch( err => {
-      console.log("Error updating beer...", err);
-    });
+    };
+    Beer.findByIdAndUpdate(beerId, beerDetails)
+        .then(() => {
+            res.redirect(`/beers/${beerId}`);
+        })
+        .catch(err => {
+            console.log("Error updating beer...", err);
+        });
 });
 
 router.post("/:beerId/delete", (req, res, next) => {
     Beer.findByIdAndDelete(req.params.beerId)
-    .then( () => {
-        res.redirect("/beers");
-    })
-    .catch(err => {
-        console.log("Error deleting beer from DB", err)
-    })
+        .then(() => {
+            res.render("beers/beer-delete");
+        })
+        .catch(err => {
+            console.log("Error deleting beer from DB", err)
+        })
 });
 
-     
 
 module.exports = router;
