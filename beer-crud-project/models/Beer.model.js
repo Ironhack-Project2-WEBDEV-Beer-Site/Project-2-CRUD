@@ -6,6 +6,7 @@ const beerSchema = new Schema(
     title: String,
     brewery: String,
     description: String,
+    image: String,
     rating: {
         type: Number,
         min: 1,

@@ -152,4 +152,8 @@ router.get("/logout", isLoggedIn, (req, res) => {
   });
 });
 
+router.get('/user-profile', (req, res) => {
+  res.render('/user-profile')
+});
+
 module.exports = router;

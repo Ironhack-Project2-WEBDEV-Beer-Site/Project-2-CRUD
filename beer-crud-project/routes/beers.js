@@ -3,10 +3,10 @@ const Beer = require("../models/Beer.model");
 const User = require("../models/User.model");
 
 
-router.get("/", (req, res, next) => {
+router.get("/beer-list", (req, res, next) => {
     Beer.find()
     .then(beersFromDB => {
-        res.render("beers/beer-collection", {beers: beersFromDB})
+        res.render("beers/beer-list", {beers: beersFromDB})
     })
     .catch(err => {console.log("Error getting beers from DB.", err)
     })
@@ -17,11 +17,12 @@ router.get("/", (req, res, next) => {
         title: req.body.title,
         brewery: req.body.brewery,
         description: req.body.description,
+        image: req.body.image,
         rating: req.body.rating
      }; 
      Beer.create(beerDetails)
     .then(() => {
-      res.redirect("/beer-collection");
+      res.redirect("/");
     })
     .catch( err => {
       console.log("Error creating new beer.", err);
@@ -54,6 +55,7 @@ router.post("/:bookId/edit", (req, res, next) => {
         title: req.body.title,
         brewery: req.body.brewery,
         description: req.body.description,
+        image: req.body.image,
         rating: req.body.rating
      }; 
      Beer.findByIdAndUpdate(beerId, beerDetails)
