@@ -19,13 +19,12 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, password } = req.body;
+  const { username, email, password } = req.body;
 
-  if (!username) {
-    return res
-      .status(400)
-      .render("auth/signup", { errorMessage: "Please provide your username." });
-  }
+  if (!username || !password || !email) {
+    res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide your username, email and password.' });
+    return;
+}
 
   if (password.length < 8) {
     return res.status(400).render("auth/signup", {
@@ -62,6 +61,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         // Create a user and save it in the database
         return User.create({
           username,
+          email,
           password: hashedPassword,
         });
       })
@@ -148,12 +148,12 @@ router.get("/logout", isLoggedIn, (req, res) => {
         .status(500)
         .render("auth/logout", { errorMessage: err.message });
     }
-    res.redirect("/user-profile");
+    res.redirect("users/user-profile");
   });
 });
 
 router.get('/user-profile', (req, res) => {
-  res.render('/user-profile')
+  res.render('users/user-profile');
 });
 
 module.exports = router;
