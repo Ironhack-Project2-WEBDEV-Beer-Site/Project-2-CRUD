@@ -21,11 +21,10 @@ router.get("/signup", isLoggedOut, (req, res) => {
 router.post("/signup", isLoggedOut, (req, res) => {
   const { username, email, password } = req.body;
 
-  if (!username) {
-    return res
-      .status(400)
-      .render("auth/signup", { errorMessage: "Please provide your username." });
-  }
+  if (!username || !password || !email) {
+    res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide your username, email and password.' });
+    return;
+}
 
   if(!email) {
     return res

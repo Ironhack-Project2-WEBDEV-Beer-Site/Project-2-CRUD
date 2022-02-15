@@ -3,31 +3,15 @@ const { Schema, model } = require('mongoose');
 
 const beerSchema = new Schema(
   {
-    title: {
-      type: String,
-      required: true,
-    },
-    brewery: {
-      type: String,
-      required: true,
-    },
-    //alcoholcontent: Number, 
-
-    category: {
-      type: String,
-      enum: ["pale ale", "pills", "whatever"]
-    },
-
-
+    title: String,
+    brewery: String,
     description: String,
-    //image: String,
+    image: String,
     rating: {
         type: Number,
         min: 1,
         max: 5,
-        required: true,
     }
-
   },
   {
     timestamps: true
