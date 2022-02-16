@@ -6,7 +6,7 @@ const User = require("../models/User.model");
 router.get("/beer-list", (req, res, next) => {
     Beer.find()
         .then(beersFromDB => {
-            res.render("beers/beer-list", { beers: beersFromDB })
+            res.render("beers/beer-list", {beers: beersFromDB, userInSession: req.session.user}, )
         })
         .catch(err => {
             console.log("Error getting beers from DB.", err)
@@ -14,7 +14,7 @@ router.get("/beer-list", (req, res, next) => {
 });
 
 router.get("/beer-create", (req, res, next) => {
-            res.render("beers/beer-create")
+            res.render("beers/beer-create", {userInSession: req.session.user})
 });
 
 router.post("/beer-create", (req, res, next) => {
@@ -37,8 +37,8 @@ router.post("/beer-create", (req, res, next) => {
 
 router.get("/:beerId", (req, res, next) => {
     Beer.findById(req.params.beerId)
-        .then(beer => {
-            res.render("beers/beer-details", beer)
+        .then(beerFromDB => {
+            res.render("beers/beer-details", {beer: beerFromDB , userInSession: req.session.user})
         })
         .catch(err => {
             console.log("Error getting beer from DB", err)
