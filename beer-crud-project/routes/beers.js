@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Beer = require("../models/Beer.model");
 const User = require("../models/User.model");
+const Brewery = require("../models/Brewery.model");
 
 
 router.get("/beer-list", (req, res, next) => {

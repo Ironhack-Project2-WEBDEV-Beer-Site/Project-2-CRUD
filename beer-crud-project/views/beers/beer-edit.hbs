@@ -17,6 +17,14 @@
         <input type="number" name="rating" min="1" max="5" value="{{rating}}" />
     </label>
 
+    <label for="beerstyle">Choose a Beerstyle:</label>
+
+    <select name="beerstyle" id="beerstyle">
+        {{#each beerstyle}}
+        <option value={{this}}>{{this}}</option>
+        {{/each}}
+    </select>
+
     <button>Save changes</button>
 </form>
 
