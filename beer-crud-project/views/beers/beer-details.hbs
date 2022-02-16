@@ -1,9 +1,9 @@
-<h1>Beer Details of {{title}}</h1>
+<h1>Beer Details of {{beer.title}}</h1>
 <hr>
-<p>Brewery: {{brewery}}</p>
-<p>Description: {{description}}</p>
-<p>Rating: {{rating}}/5</p>
-<p>Style: {{beerstyle}}</p>
+<p>Brewery: {{beer.brewery}}</p>
+<p>Description: {{beer.description}}</p>
+<p>Rating: {{beer.rating}}/5</p>
+<p>Style: {{beer.beerstyle}}</p>
 <hr>
 <p><a href="/beers/beer-list">Back</a> <span>|</span> <a href="/beers/{{_id}}/edit">Edit</a></p>
 <form action="/beers/{{_id}}/delete" method="POST">

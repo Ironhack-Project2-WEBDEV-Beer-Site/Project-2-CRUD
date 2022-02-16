@@ -1,0 +1,13 @@
+<h1>Details of {{brewery.name}}</h1>
+<hr>
+<p>Address: {{brewery.address}}</p>
+<p>City: {{brewery.city}}</p>
+<p>State: {{brewery.state}}</p>
+<p>Postcode: {{brewery.code}}</p>
+<p>Country: {{brewery.country}}</p>
+<p>Website: <a href="{{brewery.website}}"> {{brewery.website}}</a></p>
+<p>Description: {{brewery.description}}</p>
+<hr>
+<p><a href="/brewery/brewery-list">Back</a> <span>|</span> <a href="/brewery/{{_id}}/edit">Edit</a></p>
+<form action="/brewery/{{_id}}/delete" method="POST">
+    <button>Delete</button></p>
