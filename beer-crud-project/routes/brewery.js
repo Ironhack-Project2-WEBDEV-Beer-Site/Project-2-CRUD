@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const Brewery = require("../models/Brewery.model");
 const Beer = require("../models/Beer.model");
+const User = require("../models/User.model");
+const Brewery = require("../models/Brewery.model");
 
 router.get("/brewery-list", (req, res, next) => {
     Brewery.find()

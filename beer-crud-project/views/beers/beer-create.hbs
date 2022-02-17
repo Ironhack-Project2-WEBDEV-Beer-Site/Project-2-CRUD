@@ -8,9 +8,11 @@
         </p>
 
         <p>
-            <label> Brewery:
-                <input type="text" name="brewery" />
-            </label>
+             <select name="brewery">
+            {{#each breweries}}
+        <option value={{breweries._id}}>{{breweries.name}}</option>
+            {{/each}}
+    </select>
         </p>
 
         <p>
@@ -36,5 +38,5 @@
         <button type="submit"> Create </button>
     </form>
 
-    <p><a class="button" href="/beers/beer-list">Back</a></p>
+    <p><a href="/beers/beer-list">Back</a></p>
 </div>

@@ -1,26 +1,26 @@
-<h2>Edit the Beer: {{title}}</h2>
+<h2>Edit the Beer: {{beer.title}}</h2>
 
-<form action="/beers/{{_id}}/edit" method="post">
+<form action="/beers/{{beer._id}}/edit" method="post">
     <label> Title:
-        <input type="text" name="title" value="{{title}}" />
+        <input type="text" name="title" value="{{beer.title}}" />
     </label>
 
     <label> Brewery:
-        <input type="text" name="brewery" value="{{author}}" />
+        <input type="text" name="brewery" value="{{beer.brewery}}" />
     </label>
 
     <label> Description:
-        <textarea name="description" cols="30" rows="4">{{description}}</textarea>
+        <textarea name="description" cols="30" rows="4">{{beer.description}}</textarea>
     </label>
 
     <label> Rating:
-        <input type="number" name="rating" min="1" max="5" value="{{rating}}" />
+        <input type="number" name="rating" min="1" max="5" value="{{beer.rating}}" />
     </label>
 
     <label for="beerstyle">Choose a Beerstyle:</label>
 
     <select name="beerstyle" id="beerstyle">
-        {{#each beerstyle}}
+        {{#each beer.beerstyle}}
         <option value={{this}}>{{this}}</option>
         {{/each}}
     </select>
@@ -28,4 +28,4 @@
     <button>Save changes</button>
 </form>
 
-<p><a href="/beers/{{_id}}">Back</a></p>
+<p><a href="/beers/{{beer._id}}">Back</a></p>
