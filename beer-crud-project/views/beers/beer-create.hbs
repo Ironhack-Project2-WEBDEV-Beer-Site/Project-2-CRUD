@@ -10,8 +10,8 @@
         <label> Brewery:
              <p>
             <select name="brewery">
-                {{#each brewery.name}}
-                <option value="{{this}}">{{this}}</option>
+                {{#each info}}
+                <option value="{{_id}}">{{name}}</option>
                 {{/each}}
             </select>
         </p>

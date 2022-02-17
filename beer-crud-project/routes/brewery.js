@@ -48,17 +48,17 @@ router.get("/:breweryId", (req, res, next) => {
         })
 });
 
-router.get("/:breweryId/edit", (req, res, next) => {
+router.get("/:breweryId/edit", isLoggedIn, (req, res, next) => {
     Brewery.findById(req.params.breweryId)
         .then(brewery => {
-            res.render("brewery/brewery-edit", brewery)
+            res.render("brewery/brewery-edit", {brewery: brewery ,userInSession: req.session.user})
         })
         .catch(err => {
             console.log("Error getting brewery details from DB", err)
         })
 });
 
-router.post("/:breweryId/edit", isLoggedIn, (req, res, next) => {
+router.post("/:breweryId/edit", (req, res, next) => {
     const breweryId = req.params.breweryId;
     const breweryDetails = {
         title: req.body.name,

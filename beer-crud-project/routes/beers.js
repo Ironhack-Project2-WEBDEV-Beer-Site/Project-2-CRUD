@@ -17,16 +17,24 @@ router.get("/beer-list", (req, res, next) => {
 });
 
 router.get("/beer-create", (req, res, next) => {
-    Beer.find()
-        .populate("brewery")
-        .then((beerResult) => {
-            res.render("beers/beer-create", {
-                beer: beerResult,
-                beerstyle: Beer.schema.path("beerstyle"),
-            });
+
+    let dbInfo;
+    const findBeer = Beer.find()
+    .populate("brewery")
+
+Brewery.find()
+    .then(info => {
+        dbInfo = info
+      return findBeer
+    })
+    .then((beerSingle) => {
+            console.log(dbInfo)
+            res.render("beers/beer-create", {beer: beerSingle, beerstyle: Beer.schema.path("beerstyle"), info: dbInfo, userInSession: req.session.user})
         })
         .catch();
 });
+
+    
 
 
 router.post("/beer-create", (req, res, next) => {
@@ -62,10 +70,16 @@ router.get("/:beerId", (req, res, next) => {
 });
 
 router.get("/:beerId/edit", isLoggedIn, (req, res, next) => {
-    Beer.findById(req.params.beerId)
-        .populate("brewery")
+    let dbInfo;
+    const findBeer = Beer.findById(req.params.beerId)
+    .populate("brewery")
+
+Brewery.find()
+    .then(info => {
+        dbInfo = info
+      return findBeer })
         .then(beerFromDB => {
-            res.render("beers/beer-edit", {beer: beerFromDB , userInSession: req.session.user, beerstyle: Beer.schema.path("beerstyle")})
+            res.render("beers/beer-edit", {beer: beerFromDB , userInSession: req.session.user, beerstyle: Beer.schema.path("beerstyle"), info: dbInfo})
         })
         .catch(err => {
             console.log("Error getting beer details from DB", err)
