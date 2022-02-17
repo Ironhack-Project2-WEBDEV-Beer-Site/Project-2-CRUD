@@ -1,10 +1,13 @@
-<h1>Beer Details of {{beer.title}}</h1>
+<h3>Beer Details of {{beer.title}}</h3>
 <hr>
-<p>Brewery: {{beer.brewery.name}}</p>
-<p>Description: {{beer.description}}</p>
-<p>Rating: {{beer.rating}}/5</p>
-<p>Style: {{beer.beerstyle}}</p>
+<p class="large-text">Brewery: {{beer.brewery.name}}</p>
+<details class="card amber1">
+    <summary>Description</summary>
+    <p>{{beer.description}}</p>
+</details>
+<p class="large-text">Rating: {{beer.rating}}/5</p>
+<p class="large-text">Style: {{beer.beerstyle}}</p>
 <hr>
-<p><a href="/beers/beer-list">Back</a> <span>|</span> <a href="/beers/{{beer._id}}/edit">Edit</a></p>
-<form action="/beers/{{beer._id}}/delete" method="POST">
-    <button>Delete</button></p>
+<button class="extend square round amber extra" onclick="location.href='/beers/beer-list'"><i>arrow_back</i><span>Back</span></a></button>
+<button class="extend square round amber extra" onclick="location.href='/beers/{{beer._id}}/edit'"><i>build</i><span>Edit</span></a></button>
+<button class="extend square round red extra" onclick="location.href='/beers/{{beer._id}}/delete'"><i>🗑️</i><span>Delete</span></a></button>

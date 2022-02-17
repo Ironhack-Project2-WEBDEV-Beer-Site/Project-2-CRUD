@@ -1,12 +1,14 @@
-<h1>Brewery in our DB</h1>
+<h3>Brewery in our DB</h3>
 
 <a href="/brewery/brewery-create">Create New Brewery</a>
 
+<div class="row wrap large-space">
 {{#each brewery}}
-<section class="brewery-list">
-    <h2>{{this.name}}</h2>
+<div class="col s4">
+    <h4>{{this.name}}</h4>
     <p>Address: {{this.address}}</p>
     <p><a href="/brewery/{{_id}}">Show Details</a>
     </p>
-</section>
+</div>
 {{/each}}
+</div>

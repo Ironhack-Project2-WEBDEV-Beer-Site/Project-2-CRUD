@@ -1,12 +1,27 @@
-<h1>Beers in our DB</h1>
+<div>
+<h3>Beers in our DB</h3>
 
 <a href="/beers/beer-create">Create New Beer</a>
 
-{{#each beers}}
-<section class="beer-list">
-    <h2>{{this.title}}</h2>
-    <p>Rating: {{this.rating}}</p>
-    <p><a href="/beers/{{_id}}">Show Details</a>
-    </p>
-</section>
-{{/each}}
+<div class="row wrap large-space">
+    {{#each beers}}
+    <article class="no-padding">
+        <div class="row no-wrap no-space">
+            <div class="col">
+                <img src="{{this.image}}" class="responsive">
+            </div>
+            <div class="col">
+                <div class="padding">
+                    <h5>{{this.title}}</h5>
+                    <div>Rating: {{this.rating}}</div>
+                    <nav>
+                        <button class="border" onclick="location.href='/beers/{{_id}}'"><img src="../images/favicon.png" class="responsive" ><span>Details</span></a></button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </article>
+    {{/each}}
+</div>
+
+</div>

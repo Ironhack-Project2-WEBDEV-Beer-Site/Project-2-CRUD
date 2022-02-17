@@ -1,5 +1,5 @@
 <div class="new-beer">
-    <h1>Add a New Beer to the Database</h1>
+    <h3>Add a New Beer to the Database</h3>
     <p>
     <form action="/beers/beer-create" method="post">
         <label> Title:
@@ -8,15 +8,15 @@
         </p>
 
         <label> Brewery:
-             <p>
-            <select name="brewery">
-                {{#each info}}
-                <option value="{{_id}}">{{name}}</option>
-                {{/each}}
-            </select>
-        </p>
+            <div class="field suffix fill border">
+                <select name="brewery">
+                    {{#each info}}
+                    <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
         </label>
-       
+
 
         <p>
             <label> Description:
@@ -32,13 +32,13 @@
 
 
         <label>Beerstyle:
-        <div>
-            <select name="beerstyle" id="beerstyle">
-                {{#each beerstyle.enumValues}}
-                <option value="{{this}}">{{this}}</option>
-                {{/each}}
-            </select>
-        </div>
+            <div>
+                <select name="beerstyle" id="beerstyle">
+                    {{#each beerstyle.enumValues}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
         </label>
 
         <button type="submit"> Create </button>
