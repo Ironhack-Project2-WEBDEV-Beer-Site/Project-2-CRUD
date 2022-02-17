@@ -31,7 +31,7 @@ router.post("/brewery-create", (req, res, next) => {
     };
     Brewery.create(breweryDetails)
         .then(() => {
-            res.redirect("/brewery/brewery-details");
+            res.redirect("/brewery/brewery-list");
         })
         .catch(err => {
             console.log("Error creating new brewery.", err);
