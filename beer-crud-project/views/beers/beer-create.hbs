@@ -25,6 +25,14 @@
             </label>
         </p>
 
+        <div>
+            <select name="beerstyle" id="beerstyle">
+                {{#each beerstyle.enumValues}}
+                <option value={{this}}>{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+
         <button type="submit"> Create </button>
     </form>
 

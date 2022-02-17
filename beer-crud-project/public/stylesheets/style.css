@@ -31,7 +31,7 @@ h1 {
   color:#fff
 }
 
-
+#map { height: 180px; }
 
 form {
   margin: 30px auto;

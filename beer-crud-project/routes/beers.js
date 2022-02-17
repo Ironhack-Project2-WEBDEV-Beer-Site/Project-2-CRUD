@@ -7,7 +7,7 @@ const Brewery = require("../models/Brewery.model");
 router.get("/beer-list", (req, res, next) => {
     Beer.find()
         .then(beersFromDB => {
-            res.render("beers/beer-list", {beers: beersFromDB, userInSession: req.session.user}, )
+            res.render("beers/beer-list", { beers: beersFromDB, userInSession: req.session.user })
         })
         .catch(err => {
             console.log("Error getting beers from DB.", err)
@@ -15,17 +15,25 @@ router.get("/beer-list", (req, res, next) => {
 });
 
 router.get("/beer-create", (req, res, next) => {
-            res.render("beers/beer-create", {userInSession: req.session.user})
+    Beer.find()
+        .then((beerResult) => {
+            res.render("beers/beer-create", {
+                beer: beerResult,
+                beerstyle: Beer.schema.path("beerstyle"),
+            });
+        })
+        .catch();
 });
 
 router.post("/beer-create", (req, res, next) => {
     const beerDetails = {
         title: req.body.title,
-        brewery: req.body.brewery,
-        //alcoholontent: req.body.alcoholontent,
+        // brewery: req.body.brewery,
+        // alcoholontent: req.body.alcoholontent,
         description: req.body.description,
         image: req.body.image,
-        rating: req.body.rating
+        beerstyle: Beer.schema.path("beerstyle"),
+        rating: req.body.rating,
     };
     Beer.create(beerDetails)
         .then(() => {
@@ -39,7 +47,7 @@ router.post("/beer-create", (req, res, next) => {
 router.get("/:beerId", (req, res, next) => {
     Beer.findById(req.params.beerId)
         .then(beerFromDB => {
-            res.render("beers/beer-details", {beer: beerFromDB , userInSession: req.session.user})
+            res.render("beers/beer-details", { beer: beerFromDB, userInSession: req.session.user })
         })
         .catch(err => {
             console.log("Error getting beer from DB", err)

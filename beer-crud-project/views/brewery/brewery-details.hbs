@@ -11,3 +11,18 @@
 <p><a href="/brewery/brewery-list">Back</a> <span>|</span> <a href="/brewery/{{_id}}/edit">Edit</a></p>
 <form action="/brewery/{{_id}}/delete" method="POST">
     <button>Delete</button></p>
+
+
+    <div id="map"></div>
+
+    <script>
+        var map = L.map('map').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.5, -0.09]).addTo(map)
+            .bindPopup('Guide me here')
+            .openPopup('google.de');
+    </script>
