@@ -17,6 +17,7 @@ router.get("/beer-list", (req, res, next) => {
 
 router.get("/beer-create", (req, res, next) => {
     Beer.find()
+        .populate("brewery")
         .then((beerResult) => {
             res.render("beers/beer-create", {
                 beer: beerResult,
@@ -77,6 +78,7 @@ router.post("/:beerId/edit", (req, res, next) => {
         rating: req.body.rating
     };
     Beer.findByIdAndUpdate(beerId, beerDetails)
+        .populate("brewery")
         .then(() => {
             res.redirect(`/beers/${beerId}`);
         })
