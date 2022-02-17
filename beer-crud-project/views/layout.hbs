@@ -5,7 +5,11 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <link rel="stylesheet" href="/stylesheets/style.css" />
+
+   {{!-- beercss --}}
+   <link href="https://cdn.jsdelivr.net/npm/beercss@2.0.12/dist/cdn/beer.min.css" rel="stylesheet" />
+   <script src="https://cdn.jsdelivr.net/npm/beercss@2.0.12/dist/cdn/beer.min.js" type="text/javascript"></script>
+
 
    {{!-- leaflet CDN --}}
    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -17,15 +21,31 @@
 </head>
 
 <body id="layoutBody">
-   <header id="header">
-      <a href="/">Home </a> <span>|</span> <a href="/beers/beer-list">Beer Collection </a> <span> |
-      </span> <a href="/brewery/brewery-list">Brewery Collection </a>|
+   <header id="header" class="menu top">
+      <img src="../images/favicon.png" class="circle small-margin">
+      <button class="amber black-text" onclick="location.href='/'">
+         <i class="outlined">home</i><span>Home</span>
+      </button>
+      <button class="amber black-text" onclick="location.href='/beers/beer-list'">
+         <span>Beers</span>
+      </button>
+      <button class="amber black-text" onclick="location.href='/brewery/brewery-list'">
+         <span>Breweries</span>
+      </button>
       {{#if userInSession}}
-      </span> <a href="/auth/logout">Logout</a>
+      <button class="red black-text" onclick="location.href='/auth/logout'">
+         <i class="outlined">cached</i>
+         <span>Logout</span>
+      </button>
       {{else}}
-      </span> <a href="/auth/user-profile">Account</a>
+      <button class="white-text" onclick="location.href='/auth/user-profile'">
+         <i class="outlined">account_circle</i>
+         <span>Account</span>
+      </button>
       {{/if}}
    </header>
+
+   <div class="large-margin top"></div>
 
    {{{body}}}
 
