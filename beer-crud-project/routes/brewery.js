@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Beer = require("../models/Beer.model");
 const User = require("../models/User.model");
 const Brewery = require("../models/Brewery.model");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/brewery-list", (req, res, next) => {
     Brewery.find()
@@ -57,7 +58,7 @@ router.get("/:breweryId/edit", (req, res, next) => {
         })
 });
 
-router.post("/:breweryId/edit", (req, res, next) => {
+router.post("/:breweryId/edit", isLoggedIn, (req, res, next) => {
     const breweryId = req.params.breweryId;
     const breweryDetails = {
         title: req.body.name,
