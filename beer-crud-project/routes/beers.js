@@ -30,7 +30,7 @@ router.post("/beer-create", (req, res, next) => {
     const beerDetails = {
         title: req.body.title,
         abv: req.body.abv,
-        brewery: req.body.brewery,
+        //brewery: req.body.brewery,
         description: req.body.description,
         image: req.body.image,
         beerstyle: Beer.schema.path("beerstyle"),
