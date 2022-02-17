@@ -1,11 +1,12 @@
 <h1>Details of {{brewery.name}}</h1>
 <hr>
-<p>Country: {{brewery.country}}</p>
 <p>City: {{brewery.city}}</p>
 <p>State: {{brewery.state}}</p>
-<p>Postcode: {{brewery.code}}</p>
+<p>Country: {{brewery.country}}</p>
+<p>Zipcode: {{brewery.zip}}</p>
 <p>Website: <a href="{{brewery.website}}"> {{brewery.website}}</a></p>
 <p>Description: {{brewery.description}}</p>
+
 
 <hr>
 
@@ -28,5 +29,7 @@
 
 <p><a href="/brewery/brewery-list">Back</a> <span>|</span> <a href="/brewery/{{brewery._id}}/edit">Edit</a></p>
 <form action="/brewery/{{brewery._id}}/delete" method="POST">
-    
+      {{#if userInSession}}
     <button>Delete</button></p>
+      {{/if}}
+      

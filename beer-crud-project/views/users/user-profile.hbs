@@ -1,4 +1,4 @@
-<h1>Account</h1>
+<h1 class="signInOut">Account</h1>
 
 {{#if userInSession}}
   <h2>Welcome, {{ userInSession.username }}!</h2>
@@ -8,11 +8,10 @@
   </button>
   
 {{else}}
-<p>Still no logged in user, please login!</p>
+<p class="signInOut">Signup or Login</p>
 {{/if}}
 
 <div class="signInOut">
 <button class="button"><a href="/auth/signup">Signup</a></button> <br>
-<br>
  <button class="button"><a href="/auth/login">Login</a></button> 
 </div>

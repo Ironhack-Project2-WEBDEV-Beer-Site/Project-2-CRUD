@@ -107,10 +107,10 @@ router.post("/:beerId/edit", (req, res, next) => {
         });
 });
 
-router.post("/:beerId/delete", (req, res, next) => {
+router.post("/:beerId/delete", isLoggedIn, (req, res, next) => {
     Beer.findByIdAndDelete(req.params.beerId)
         .then(() => {
-            res.render("beers/beer-delete");
+            res.render("beers/beer-delete", {userInSession: req.session.user});
         })
         .catch(err => {
             console.log("Error deleting beer from DB", err)

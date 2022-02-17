@@ -4,6 +4,7 @@
 
 {{#each beers}}
 <section class="beer-list">
+    <img src="{{this.image}}" alt="beer" width="500" height="600">
     <h2>{{this.title}}</h2>
     <p>Rating: {{this.rating}}</p>
     <p><a href="/beers/{{_id}}">Show Details</a>

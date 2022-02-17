@@ -1,5 +1,6 @@
 <h1>Beer Details of {{beer.title}}</h1>
 <hr>
+<img src="{{beer.image}}" alt="beer" width="500" height="600">
 <p>Brewery: {{beer.brewery.name}}</p>
 <p>Description: {{beer.description}}</p>
 <p>Rating: {{beer.rating}}/5</p>
@@ -7,4 +8,6 @@
 <hr>
 <p><a href="/beers/beer-list">Back</a> <span>|</span> <a href="/beers/{{beer._id}}/edit">Edit</a></p>
 <form action="/beers/{{beer._id}}/delete" method="POST">
+    {{#if userInSession}}
     <button>Delete</button></p>
+    {{/if}}
