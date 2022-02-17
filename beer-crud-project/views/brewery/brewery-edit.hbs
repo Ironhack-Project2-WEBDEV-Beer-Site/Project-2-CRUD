@@ -1,39 +1,39 @@
-<h2>Edit the Brewery: {{name}}</h2>
+<h2>Edit the Brewery: {{brewery.name}}</h2>
 
-<form action="/brewery/{{_id}}/edit" method="post">
+<form action="/brewery/{{brewery._id}}/edit" method="post">
     <label> Title:
-        <input type="text" name="title" value="{{name}}" />
+        <input type="text" name="title" value="{{brewery.name}}" />
     </label>
 
     <label> Address:
-        <input type="text" name="address" value="{{address}}" />
+        <input type="text" name="address" value="{{brewery.address}}" />
     </label>
 
     <label> City:
-        <input type="text" name="city" value="{{city}}" />
+        <input type="text" name="city" value="{{brewery.city}}" />
     </label>
 
     <label> State:
-        <input type="text" name="state" value="{{state}}" />
+        <input type="text" name="state" value="{{brewery.state}}" />
     </label>
 
     <label> Postcode:
-        <input type="number" name="code" value="{{code}}" />
+        <input type="number" name="code" value="{{brewery.code}}" />
     </label>
 
     <label> Country:
-        <input type="text" name="country" value="{{country}}" />
+        <input type="text" name="country" value="{{brewery.country}}" />
     </label>
 
     <label> Website:
-        <input type="text" name="website" value="{{website}}" />
+        <input type="text" name="website" value="{{brewery.website}}" />
     </label>
 
     <label> Description:
-        <textarea name="description" cols="30" rows="4">{{description}}</textarea>
+        <textarea name="description" cols="30" rows="4">{{brewery.description}}</textarea>
     </label>
 
     <button>Save changes</button>
 </form>
 
-<p><a href="/brewery/{{_id}}">Back</a></p>
+<p><a href="/brewery/{{brewery._id}}">Back</a></p>

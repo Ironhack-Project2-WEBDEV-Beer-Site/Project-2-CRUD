@@ -3,6 +3,7 @@ const Beer = require("../models/Beer.model");
 const User = require("../models/User.model");
 const Brewery = require("../models/Brewery.model");
 const { json } = require("express/lib/response");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/brewery-list", (req, res, next) => {
     Brewery.find()
@@ -50,10 +51,10 @@ router.get("/:breweryId", (req, res, next) => {
         })
 });
 
-router.get("/:breweryId/edit", (req, res, next) => {
+router.get("/:breweryId/edit", isLoggedIn, (req, res, next) => {
     Brewery.findById(req.params.breweryId)
         .then(brewery => {
-            res.render("brewery/brewery-edit", brewery)
+            res.render("brewery/brewery-edit", {brewery: brewery ,userInSession: req.session.user})
         })
         .catch(err => {
             console.log("Error getting brewery details from DB", err)
