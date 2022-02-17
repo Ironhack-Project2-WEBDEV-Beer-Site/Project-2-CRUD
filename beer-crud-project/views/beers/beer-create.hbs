@@ -8,11 +8,11 @@
         </p>
 
         <p>
-             <select name="brewery">
-            {{#each breweries}}
-        <option value={{breweries._id}}>{{breweries.name}}</option>
-            {{/each}}
-    </select>
+            <select name="brewery">
+                {{#each brewery}}
+                <option value={{this._id}}>{{this.name}}</option>
+                {{/each}}
+            </select>
         </p>
 
         <p>
