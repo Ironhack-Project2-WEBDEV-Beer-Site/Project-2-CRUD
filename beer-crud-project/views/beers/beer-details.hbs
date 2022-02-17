@@ -5,6 +5,6 @@
 <p>Rating: {{beer.rating}}/5</p>
 <p>Style: {{beer.beerstyle}}</p>
 <hr>
-<p><a href="/beers/beer-list">Back</a> <span>|</span> <a href="/beers/{{_id}}/edit">Edit</a></p>
-<form action="/beers/{{_id}}/delete" method="POST">
+<p><a href="/beers/beer-list">Back</a> <span>|</span> <a href="/beers/{{beer._id}}/edit">Edit</a></p>
+<form action="/beers/{{beer._id}}/delete" method="POST">
     <button>Delete</button></p>

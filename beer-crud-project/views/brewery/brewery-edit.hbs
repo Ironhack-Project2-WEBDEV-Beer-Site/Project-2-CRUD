@@ -1,0 +1,39 @@
+<h2>Edit the Brewery: {{name}}</h2>
+
+<form action="/brewery/{{_id}}/edit" method="post">
+    <label> Title:
+        <input type="text" name="title" value="{{name}}" />
+    </label>
+
+    <label> Address:
+        <input type="text" name="address" value="{{address}}" />
+    </label>
+
+    <label> City:
+        <input type="text" name="city" value="{{city}}" />
+    </label>
+
+    <label> State:
+        <input type="text" name="state" value="{{state}}" />
+    </label>
+
+    <label> Postcode:
+        <input type="number" name="code" value="{{code}}" />
+    </label>
+
+    <label> Country:
+        <input type="text" name="country" value="{{country}}" />
+    </label>
+
+    <label> Website:
+        <input type="text" name="website" value="{{website}}" />
+    </label>
+
+    <label> Description:
+        <textarea name="description" cols="30" rows="4">{{description}}</textarea>
+    </label>
+
+    <button>Save changes</button>
+</form>
+
+<p><a href="/brewery/{{_id}}">Back</a></p>

@@ -6,6 +6,7 @@ const Brewery = require("../models/Brewery.model");
 
 router.get("/beer-list", (req, res, next) => {
     Beer.find()
+        .populate("brewery")
         .then(beersFromDB => {
             res.render("beers/beer-list", {beers: beersFromDB, userInSession: req.session.user}, )
         })
@@ -21,10 +22,11 @@ router.get("/beer-create", (req, res, next) => {
 router.post("/beer-create", (req, res, next) => {
     const beerDetails = {
         title: req.body.title,
+        abv: req.body.abv,
         brewery: req.body.brewery,
-        //alcoholontent: req.body.alcoholontent,
         description: req.body.description,
         image: req.body.image,
+        beerstyle: req.body.beerstyle,
         rating: req.body.rating
     };
     Beer.create(beerDetails)
@@ -48,8 +50,8 @@ router.get("/:beerId", (req, res, next) => {
 
 router.get("/:beerId/edit", (req, res, next) => {
     Beer.findById(req.params.beerId)
-        .then(beer => {
-            res.render("beers/beer-edit", beer)
+        .then(beerFromDB => {
+            res.render("beers/beer-edit", {beer: beerFromDB , userInSession: req.session.user})
         })
         .catch(err => {
             console.log("Error getting beer details from DB", err)
@@ -60,10 +62,11 @@ router.post("/:beerId/edit", (req, res, next) => {
     const beerId = req.params.beerId;
     const beerDetails = {
         title: req.body.title,
+        abv: req.body.abv,
         brewery: req.body.brewery,
-        //alcoholcontent: req.body.alcoholontent,
         description: req.body.description,
         image: req.body.image,
+        beerstyle: req.body.beerstyle,
         rating: req.body.rating
     };
     Beer.findByIdAndUpdate(beerId, beerDetails)
