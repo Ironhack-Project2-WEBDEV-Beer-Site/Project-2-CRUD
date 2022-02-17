@@ -34,7 +34,7 @@ router.post("/beer-create", (req, res, next) => {
         brewery: req.body.brewery,
         description: req.body.description,
         image: req.body.image,
-        beerstyle: Beer.schema.path("beerstyle"),
+        beerstyle: req.body.beerstyle,
         rating: req.body.rating,
     };
     Beer.create(beerDetails)

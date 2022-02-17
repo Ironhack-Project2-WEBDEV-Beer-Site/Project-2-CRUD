@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Beer = require("../models/Beer.model");
 const User = require("../models/User.model");
 const Brewery = require("../models/Brewery.model");
+const { json } = require("express/lib/response");
 
 router.get("/brewery-list", (req, res, next) => {
     Brewery.find()
@@ -38,9 +39,11 @@ router.post("/brewery-create", (req, res, next) => {
 });
 
 router.get("/:breweryId", (req, res, next) => {
+    let location;
     Brewery.findById(req.params.breweryId)
         .then(breweryFromDB => {
-            res.render("brewery/brewery-details", {brewery: breweryFromDB , userInSession: req.session.user})
+            location = [breweryFromDB.lat, breweryFromDB.long]
+            res.render("brewery/brewery-details", {brewery: breweryFromDB , userInSession: req.session.user, location: JSON.stringify(location)})
         })
         .catch(err => {
             console.log("Error getting brewery from DB", err)

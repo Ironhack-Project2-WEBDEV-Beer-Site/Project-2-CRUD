@@ -1,27 +1,32 @@
 <h1>Details of {{brewery.name}}</h1>
 <hr>
-<p>Address: {{brewery.address}}</p>
+<p>Country: {{brewery.country}}</p>
 <p>City: {{brewery.city}}</p>
 <p>State: {{brewery.state}}</p>
 <p>Postcode: {{brewery.code}}</p>
-<p>Country: {{brewery.country}}</p>
 <p>Website: <a href="{{brewery.website}}"> {{brewery.website}}</a></p>
 <p>Description: {{brewery.description}}</p>
+
 <hr>
 
     <div id="map"></div>
 
     <script>
-        var map = L.map('map').setView([51.505, -0.09], 13);
+        let loc = {{{location}}};
+        console.log(loc);
+        var map = L.map('map').setView(loc, 13);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        L.marker([51.5, -0.09]).addTo(map)
+        L.marker(loc).addTo(map)
             .bindPopup('Guide me here')
-            .openPopup('google.de');
+            .openPopup();
+
     </script>
+
 <p><a href="/brewery/brewery-list">Back</a> <span>|</span> <a href="/brewery/{{brewery._id}}/edit">Edit</a></p>
 <form action="/brewery/{{brewery._id}}/delete" method="POST">
+    
     <button>Delete</button></p>

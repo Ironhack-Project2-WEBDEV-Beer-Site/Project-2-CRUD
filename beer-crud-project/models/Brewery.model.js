@@ -4,11 +4,12 @@ const { Schema, model } = require('mongoose');
 const brewerySchema = new Schema(
     {
         name: String,
-        address: String,
+        lat: Number,
+        long: Number,
         city: String,
         state: String,
-        code: Number,
         country: String,
+        zip: String,
         website: String,
         description: String,
     },
