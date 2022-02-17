@@ -28,13 +28,14 @@ router.get("/beer-create", (req, res, next) => {
 });
 
 router.post("/beer-create", (req, res, next) => {
+    console.log(req.body)
     const beerDetails = {
         title: req.body.title,
         abv: req.body.abv,
         //brewery: req.body.brewery,
         description: req.body.description,
         image: req.body.image,
-        beerstyle: Beer.schema.path("beerstyle"),
+        beerstyle: req.body.beerstyle,
         rating: req.body.rating,
     };
     Beer.create(beerDetails)
@@ -48,6 +49,7 @@ router.post("/beer-create", (req, res, next) => {
 
 router.get("/:beerId", (req, res, next) => {
     Beer.findById(req.params.beerId)
+        .populate("brewery")
         .then(beerFromDB => {
             res.render("beers/beer-details", { beer: beerFromDB, userInSession: req.session.user })
         })
@@ -58,6 +60,7 @@ router.get("/:beerId", (req, res, next) => {
 
 router.get("/:beerId/edit", (req, res, next) => {
     Beer.findById(req.params.beerId)
+        .populate("brewery")
         .then(beerFromDB => {
             res.render("beers/beer-edit", {beer: beerFromDB , userInSession: req.session.user})
         })
@@ -74,7 +77,7 @@ router.post("/:beerId/edit", (req, res, next) => {
         brewery: req.body.brewery,
         description: req.body.description,
         image: req.body.image,
-        beerstyle: req.body.beerstyle,
+        beerstyle: "Altbier",
         rating: req.body.rating
     };
     Beer.findByIdAndUpdate(beerId, beerDetails)
