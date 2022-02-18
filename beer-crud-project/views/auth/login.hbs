@@ -1,14 +1,23 @@
-<form action="/auth/login" method="POST">
-   <label> Username
-      <input type="text" name="username">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
+<div class="large-margin">
+   <div class="large-divider"></div>
 
-   <button type="submit">Submit</button>
-</form>
+   <h3 class="large-margin">Login</h3>
 
-{{#if errorMessage}}
+   <form action="/auth/login" method="POST">
+
+      <div class="field suffix fill border large-margin">
+         <label> Username</label>
+         <input type="text" name="username">
+      </div>
+
+      <div class="field suffix fill border large-margin">
+         <label> Password</label>
+         <input type="password" name="password">
+      </div>
+
+      <button class="responsive large-margin" type="submit">Submit</button>
+   </form>
+
+   {{#if errorMessage}}
    {{errorMessage}}
-{{/if}}
+   {{/if}}

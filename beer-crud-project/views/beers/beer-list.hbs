@@ -1,27 +1,41 @@
-<div>
-<h3>Beers in our DB</h3>
+<div class="large-margin">
+    <div class="large-divider"></div>
+    <div>
+        <h3 class="large-margin">Beers in our DB <span><button class="amber black-text large-margin"
+                    onclick="location.href='/beers/beer-create'">
+                    <span>Create New Beer</span></h3>
+        </button>
+        </span>
+    </div>
 
-<a href="/beers/beer-create">Create New Beer</a>
+    <style>
+        #beerpic {
+            max-height: 200px;
+            max-width: 200px;
+            border-radius: 2em;
+        }
+    </style>
 
-<div class="row wrap large-space">
-    {{#each beers}}
-    <article class="no-padding">
-        <div class="row no-wrap no-space">
-            <div class="col">
-                <img src="{{this.image}}" class="responsive">
-            </div>
-            <div class="col">
-                <div class="padding">
-                    <h5>{{this.title}}</h5>
-                    <div>Rating: {{this.rating}}</div>
-                    <nav>
-                        <button class="border" onclick="location.href='/beers/{{_id}}'"><img src="../images/favicon.png" class="responsive" ><span>Details</span></a></button>
-                    </nav>
+    <div class="row wrap small-space wrap">
+        {{#each beers}}
+        <div class="col s4">
+            <article class="small round">
+                <div class="row medium-space">
+                    <div class="col s4">
+                        <img id="beerpic" src="{{this.image}}" class="responsive">
+                    </div>
+                    <div class="col">
+                        <h5>{{this.title}}</h5>
+                        <hr>
+                        <p>Rating: {{this.rating}}</p>
+                        <nav>
+                            <button class="border" onclick="location.href='/beers/{{_id}}'"><img
+                                    src="../images/favicon.png" class="responsive"><span>Details</span></a></button>
+                        </nav>
+                    </div>
                 </div>
-            </div>
+            </article>
         </div>
-    </article>
-    {{/each}}
-</div>
-
+        {{/each}}
+    </div>
 </div>

@@ -1,17 +1,26 @@
-<h1 class="signInOut">Account</h1>
+<div class="large-margin">
+  <div class="large-divider"></div>
 
-{{#if userInSession}}
-  <h2>Welcome, {{ userInSession.username }}!</h2>
-  <p>This is the Account page</p>
-  <button>
-    <a href="/auth/user-profile">Reload the page</a>
-  </button>
-  
-{{else}}
-<p class="signInOut">Signup or Login</p>
-{{/if}}
+  <h3 class="signInOut">Account</h3>
 
-<div class="signInOut">
-<button class="button"><a href="/auth/signup">Signup</a></button> <br>
- <button class="button"><a href="/auth/login">Login</a></button> 
-</div>
+  <article class="border medium no-padding">
+    <div class="padding absolute white-text center middle">
+      {{#if userInSession}}
+      <h4>Welcome, {{ userInSession.username }}!</h4>
+      <p>This is the Account page</p>
+      <button>
+        <a href="/auth/user-profile">Reload the page</a>
+      </button>
+
+      {{else}}
+      <h4 class="black-text">Signup or Login</h4>
+      {{/if}}
+
+      <div class="center-align">
+        <button class="button" onclick="location.href='/auth/signup'">Signup</a></button>
+        <hr>
+        <button class="button" onclick="location.href='/auth/login'">Login</a></button>
+      </div>
+
+    </div>
+  </article>

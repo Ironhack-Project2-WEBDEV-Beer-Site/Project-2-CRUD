@@ -1,51 +1,74 @@
-<div class="new-brewery">
+<div class="large-margin">
+    <div class="large-divider"></div>
+
     <h3>Create a New Brewery</h3>
     <p>
     <form action="/brewery/brewery-create" method="post">
 
+        <p>
+            <label>Name</label>
+
         <div class="field label border fill">
             <input type="text">
-            <label>Name</label>
         </div>
+        </p>
 
-
+        <p>
+            <label>Address</label>
         <div class="field label border fill">
             <input type="text" name="address" />
-            <label>Address</label>
         </div>
+        </p>
 
+        <p>
+            <label>City</label>
         <div class="field label border fill">
             <input type="text" name="city" />
-            <label>City</label>
         </div>
+        </p>
 
+        <p>
+            <label>State</label>
         <div class="field label border fill">
             <input type="text" name="state" />
-            <label>State</label>
         </div>
+        </p>
 
+        <p>
+            <label>Postcode</label>
         <div class="field label border fill">
             <input type="number" name="code" />
-            <label>Postcode</label>
         </div>
+        </p>
 
+        <p>
+            <label>Country</label>
         <div class="field label border fill">
             <input type="text" name="country" />
-            <label>Country</label>
         </div>
+        </p>
 
+        <p>
+            <label>Website</label>
         <div class="field label border fill">
             <input type="text" name="website" />
-            <label>Website</label>
         </div>
+        </p>
 
+        <p>
+            <label>Description</label>
         <div class="field textarea label border fill">
             <textarea name="description" cols="30" rows="4"> </textarea>
-            <label>Description</label>
         </div>
+        </p>
 
-        <button type="submit"> Create </button>
+
+        <button class="extra green margin" type="submit">
+            <img src="../images/favicon.png" class="responsive">
+            <span>Create Brewery</span>
+        </button>
     </form>
+    <button class="extend square round amber extra margin"
+        onclick="location.href='/brewery/brewery-list'"><i>arrow_back</i><span>Back</span></a></button>
 
-    <p><a href="/brewery/brewery-list">Back</a></p>
 </div>

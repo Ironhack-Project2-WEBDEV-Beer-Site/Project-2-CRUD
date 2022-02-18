@@ -1,14 +1,25 @@
-<h3>Brewery in our DB</h3>
+<div class="large-margin">
+    <div class="large-divider"></div>
 
-<a href="/brewery/brewery-create">Create New Brewery</a>
+    <h3>Brewery in our DB <span> <button class="amber black-text large-margin" onclick="location.href='/brewery/brewery-create'">
+        <span>Create New Brewery</span>
+    </button></span></h3>
 
-<div class="row wrap large-space">
-{{#each brewery}}
-<section class="brewery-list">
-    <h2>{{this.name}}</h2>
-    <p>Website: <a href="{{this.website}}" /a>{{this.website}}</p>
-    <p><a href="/brewery/{{_id}}">Show Details</a>
-    </p>
-</div>
-{{/each}}
+    <div class="row wrap small-space">
+        {{#each brewery}}
+        <div class="col s4">
+            <article class="small round">
+                <h5>{{this.name}}</h5>
+                <hr>
+                <br>
+                <p>Country: {{this.country}}</p>
+                <p><a href="{{this.website}}">Website</a></p>
+                <button class="responsive" onclick="location.href='/brewery/{{_id}}'">
+                    <span>Show Details</span>
+                </button>
+            </article>
+        </div>
+        {{/each}}
+
+    </div>
 </div>

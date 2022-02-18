@@ -1,12 +1,28 @@
-<video autoplay="autoplay" loop="loop" muted="muted">
-  <source src="/videos/Pouring_Beer.mp4" type="video/mp4" heigth="100vh">
+<style>
+  #bgVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  #content {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-end;
+    color: #f1f1f1;
+    padding-top: 200px;
+  }
+</style>
+
+
+
+<video id="bgVideo" autoplay="autoplay" loop="loop" muted="muted">
+  <source src="/videos/Pouring_Beer.mp4" type="video/mp4">
 </video>
 
-
-<div class="overlay right-align middle-align white-text">
-    <h5>Position</h5>
-    <div>Lorem ipsum dolor...</div>
+<div id="content">
+  <h1>Welcome Beerlover</h1>
 </div>
-
-
-

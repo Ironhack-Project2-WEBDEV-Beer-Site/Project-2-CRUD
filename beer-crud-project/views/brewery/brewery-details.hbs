@@ -1,19 +1,49 @@
-<h3>Details of {{brewery.name}}</h3>
-<hr>
-<p>City: {{brewery.city}}</p>
-<p>State: {{brewery.state}}</p>
-<p>Country: {{brewery.country}}</p>
-<p>Zipcode: {{brewery.zip}}</p>
-<p>Website: <a href="{{brewery.website}}"> {{brewery.website}}</a></p>
-<p>Description: {{brewery.description}}</p>
+<div class="large-margin">
+    <div class="large-divider"></div>
 
+    <h3>Details of {{brewery.name}}</h3>
+    <hr>
+    <div class="row large-space large-text">
+        <div class="col s6">
+            <p>City: {{brewery.city}}</p>
+            <p>State: {{brewery.state}}</p>
+            <p>Country: {{brewery.country}}</p>
+            <p>Zipcode: {{brewery.zip}}</p>
+            <p>Website: <a href="{{brewery.website}}"> {{brewery.website}}</a></p>
+            <details class="card amber1">
+                <summary>Description</summary>
+                <p>{{brewery.description}}</p>
+            </details>
+            <hr>
+            <div>
+                <button class="extend square round amber extra margin"
+                    onclick="location.href='/brewery/brewery-list'"><i>arrow_back</i><span>Back</span></a></button>
+                <button class="extend square round amber extra margin"
+                    onclick="location.href='/brewery/{{brewery._id}}/edit'"><i>build</i><span>Edit</span></a></button>
 
-<hr>
+                <form action="/brewery/{{brewery._id}}/delete" method="POST">
+                    {{#if userInSession}}
+                    <button class="extend square round red extra margin"
+                        onclick="location.href='/brewery/{{brewery._id}}/delete'"><i>🗑️</i><span>Delete</span></a></button>
+                    {{/if}}
+                </form>
+            </div>
 
-    <div id="map"></div>
+        </div>
+
+        <style>
+            #map {
+                height: 500px;
+                width: 500px;
+                border-radius: 2em;
+            }
+        </style>
+
+        <div class="responsive" id="map"></div>
+    </div>
 
     <script>
-        let loc = {{{location}}};
+        let loc = {{{ location }}};
         console.log(loc);
         var map = L.map('map').setView(loc, 13);
 
@@ -22,14 +52,7 @@
         }).addTo(map);
 
         L.marker(loc).addTo(map)
-            .bindPopup('Guide me here')
+            .bindPopup('Beer? -- Here!')
             .openPopup();
 
     </script>
-
-<p><a href="/brewery/brewery-list">Back</a> <span>|</span> <a href="/brewery/{{brewery._id}}/edit">Edit</a></p>
-<form action="/brewery/{{brewery._id}}/delete" method="POST">
-      {{#if userInSession}}
-    <button>Delete</button></p>
-      {{/if}}
-      
