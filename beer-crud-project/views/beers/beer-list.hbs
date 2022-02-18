@@ -9,6 +9,12 @@
     </div>
 
     <style>
+
+        body {
+            background-color: black;
+            color: whitesmoke;
+        }
+        
         #beerpic {
             max-height: 200px;
             max-width: 200px;
@@ -29,7 +35,7 @@
                         <hr>
                         <p>Rating: {{this.rating}}</p>
                         <nav>
-                            <button class="border responsive" onclick="location.href='/beers/{{_id}}'"><img
+                            <button class="border amber-border black-text responsive" onclick="location.href='/beers/{{_id}}'"><img
                                     src="/images/favicon.png" class="responsive"><span>Details</span></a></button>
                         </nav>
                     </div>
