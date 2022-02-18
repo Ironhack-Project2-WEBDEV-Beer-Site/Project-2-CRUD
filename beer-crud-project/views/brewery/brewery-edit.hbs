@@ -1,66 +1,39 @@
-<h3>Edit the Brewery: {{brewery.name}}</h3>
+<h2>Edit the Brewery: {{brewery.name}}</h2>
 
 <form action="/brewery/{{brewery._id}}/edit" method="post">
-    <p>
-        <label>Name</label>
-    <div class="field label border fill">
-        <input type="text">
-    </div>
-    </p>
+    <label> Title:
+        <input type="text" name="title" value="{{brewery.name}}" />
+    </label>
 
-    <p>
-        <label>Address</label>
-    <div class="field label border fill">
-        <input type="text" name="address" />
-    </div>
-    </p>
+    <label> Address:
+        <input type="text" name="address" value="{{brewery.address}}" />
+    </label>
 
-    <p>
-        <label>City</label>
-    <div class="field label border fill">
-        <input type="text" name="city" />
-    </div>
-    </p>
+    <label> City:
+        <input type="text" name="city" value="{{brewery.city}}" />
+    </label>
 
-    <p>
-        <label>State</label>
-    <div class="field label border fill">
-        <input type="text" name="state" />
-    </div>
-    </p>
+    <label> State:
+        <input type="text" name="state" value="{{brewery.state}}" />
+    </label>
 
-    <p>
-        <label>Postcode</label>
-    <div class="field label border fill">
-        <input type="number" name="code" />
-    </div>
-    </p>
+    <label> Postcode:
+        <input type="number" name="code" value="{{brewery.code}}" />
+    </label>
 
-    <p>
-        <label>Country</label>
-    <div class="field label border fill">
-        <input type="text" name="country" />
-    </div>
-    </p>
+    <label> Country:
+        <input type="text" name="country" value="{{brewery.country}}" />
+    </label>
 
-    <p>
-        <label>Website</label>
-    <div class="field label border fill">
-        <input type="text" name="website" />
-    </div>
-    </p>
+    <label> Website:
+        <input type="text" name="website" value="{{brewery.website}}" />
+    </label>
 
-    <p>
-        <label>Description</label>
-    <div class="field textarea label border fill">
-        <textarea name="description" cols="30" rows="4"> </textarea>
-    </div>
-    </p>
+    <label> Description:
+        <textarea name="description" cols="30" rows="4">{{brewery.description}}</textarea>
+    </label>
 
-    <button class="extra green margin" type="submit">
-        <img src="/images/favicon.png" class="responsive">
-        <span>Save changes</span>
+    <button>Save changes</button>
 </form>
 
-<button class="extend square round amber extra margin"
-    onclick="location.href='/brewery/{{brewery._id}}'"><i>arrow_back</i><span>Back</span></a></button>
+<p><a href="/brewery/{{brewery._id}}">Back</a></p>
