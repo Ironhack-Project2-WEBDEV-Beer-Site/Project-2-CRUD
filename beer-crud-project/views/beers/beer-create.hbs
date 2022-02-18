@@ -4,11 +4,13 @@
     <h3>Add a New Beer to the Database</h3>
     <p>
     <form action="/beers/beer-create" method="post">
-        <label> Title:
-            <div class="field suffix fill border">
-                <input type="text" name="title" />
-            </div>
-        </label>
+
+        <p>
+            <label> Title:
+                <div class="field suffix fill border">
+                    <input type="text" name="title" />
+                </div>
+            </label>
         </p>
 
         <p>
@@ -65,11 +67,12 @@
             </label>
         </p>
 
-        <button class="extra green" type="submit">
-            <img src="../images/favicon.png" class="responsive">
+        <button class="extra green margin" type="submit">
+            <img src="./public/images/favicon.png" class="responsive">
             <span>Create Beer</span>
         </button>
     </form>
+
     <button class="extend square round amber extra margin"
         onclick="location.href='/beers/beer-list'"><i>arrow_back</i><span>Back</span></a></button>
 </div>
