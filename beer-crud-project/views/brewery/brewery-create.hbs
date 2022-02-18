@@ -13,9 +13,16 @@
         </p>
 
         <p>
-            <label>Address</label>
+            <label>Latitude</label>
         <div class="field label border fill">
-            <input type="text" name="address" />
+            <input type="number" value="{{brewery.lat}}">
+        </div>
+        </p>
+
+        <p>
+            <label>Longitude</label>
+        <div class="field label border fill">
+            <input type="number" value="{{brewery.long}}">
         </div>
         </p>
 
@@ -68,8 +75,8 @@
         </button>
     </form>
 
-<div>
-    <button class="extend square round amber extra margin"
-        onclick="location.href='/brewery/brewery-list'"><i>arrow_back</i><span>Back</span></button>
+    <div>
+        <button class="extend square round amber extra margin"
+            onclick="location.href='/brewery/brewery-list'"><i>arrow_back</i><span>Back</span></button>
 
-</div>
+    </div>
