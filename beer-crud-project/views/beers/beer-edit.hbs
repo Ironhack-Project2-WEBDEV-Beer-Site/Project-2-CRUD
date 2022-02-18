@@ -2,38 +2,46 @@
     <div class="large-divider"></div>
     <h3>Edit the Beer: {{beer.title}}</h3>
 
-<form action="/beers/{{beer._id}}/edit" method="post">
+    <form action="/beers/{{beer._id}}/edit" method="post">
 
-    <label> Title:
-        <input type="text" name="title" value="{{beer.title}}" />
-    </label>
+        <label> Title:
+            <div class="field suffix fill border">
+                <input type="text" name="title" value="{{beer.title}}" />
+            </div>
+        </label>
 
-    <label> Brewery:
-         <div>
-            <select name="brewery" id="brewery">
-                {{#each info}}
-                <option value="{{_id}}">{{name}}</option>
-                {{/each}}
-            </select>
-        </div>
+        <label> Alcohol by volume:
+            <div class="field label border fill">
+                <input type="text" name="abv" value="{{beer.abv}}" />
+            </div>
+        </label>
 
-    <label> Description:
-        <textarea name="description" cols="30" rows="4">{{beer.description}}</textarea>
-    </label>
+        <label> Brewery:
+            <div class="field suffix fill border">
+                <select name="brewery" id="brewery">
+                    {{#each info}}
+                    <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </label>
+
+        <label> Description:
+            <div class="field textarea label border fill">
+                <textarea name="description" cols="30" rows="4">{{beer.description}}</textarea>
+            </div>
+        </label>
 
         <p>
             <label> Image:
-                <input type="text" name = "image" value="{{beer.image}}" />
+                <div class="field suffix label border fill">
+                    <input type="text" name="image" value="{{beer.image}}" />
+                </div>
             </label>
         </p>
 
-
-    <label> Rating:
-        <input type="number" name="rating" min="1" max="5" value="{{beer.rating}}" />
-    </label>
-
-    <label for="beerstyle">Choose a Beerstyle:</label>
-        <div>
+        <label for="beerstyle">Choose a Beerstyle:</label>
+        <div class="field suffix fill border">
             <select name="beerstyle" id="beerstyle">
                 {{#each beerstyle.enumValues}}
                 <option value="{{this}}">{{this}}</option>
@@ -41,7 +49,20 @@
             </select>
         </div>
 
-    <button>Save changes</button>
-</form>
+        <label> Rating:
+            <div class="field suffix fill border">
+                <input type="number" name="rating" min="1" max="5" value="{{beer.rating}}" />
+            </div>
+        </label>
 
-<p><a href="/beers/{{beer._id}}">Back</a></p>
+
+        <button class="extra green" type="submit">
+            <img src="/images/favicon.png" class="responsive">
+            <span>Submit Changes</span>
+        </button>
+    </form>
+
+    <button class="extend square round amber extra margin"
+        onclick="location.href='/beers/beer-list'"><i>arrow_back</i><span>Back</span></button>
+
+</div>

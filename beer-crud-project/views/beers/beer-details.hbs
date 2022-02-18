@@ -20,7 +20,7 @@
                 onclick="location.href='/beers/beer-list'"><i>arrow_back</i><span>Back</span></a></button>
             <button class="extend square round amber extra margin"
                 onclick="location.href='/beers/{{beer._id}}/edit'"><i>build</i><span>Edit</span></a></button>
-            <form action="/brewery/{{brewery._id}}/delete" method="POST">
+            <form action="/beers/{{beer._id}}/delete" method="POST">
                 {{#if userInSession}}
                 <button class="extend square round red extra margin"
                     onclick="location.href='/beers/{{beer._id}}/delete'"><i>🗑️</i><span>Delete</span></a></button>
